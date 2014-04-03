@@ -43,7 +43,7 @@ public class CreateWorldScript : MonoBehaviour
             //_matrice.Add(_matriceTmp);
             _matriceElem.Add(matriceElemTmp);
         }
-        _lifeGame.init();
+        //_lifeGame.init();
     }
 
 }
