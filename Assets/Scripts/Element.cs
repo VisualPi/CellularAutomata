@@ -18,7 +18,11 @@ public class Element
     public void setState(bool state)
     {
         getMeshRenderer().enabled = state;
-        if(!state)
+        if(state)
+        {
+            _generation++;
+        }
+        else
         {
             _generation = 0;
         }

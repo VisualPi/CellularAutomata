@@ -286,7 +286,7 @@ public class lifeGameScript : MonoBehaviour
                 {
                     //_matriceMesh[i][j].enabled = true;
                     _world._matriceElem[i][j].setState(true);
-                    _world._matriceElem[i][j]._generation++;
+                    //_world._matriceElem[i][j]._generation++; //dans setState
                 }
             }
         }
