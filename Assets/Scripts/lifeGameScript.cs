@@ -267,6 +267,7 @@ public class lifeGameScript : MonoBehaviour
                 }
             }
         }
+        grewUp();
     }
     public void pause()
     {
