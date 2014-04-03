@@ -14,7 +14,8 @@ public class CreateWorldScript : MonoBehaviour
 
     //public GameObject[][] cellulTab = new GameObject[][]; //a gerer avec une taille fixe
 
-    public List<List<GameObject>> _matrice = new List<List<GameObject>>();
+    //public List<List<GameObject>> _matrice = new List<List<GameObject>>();
+    public List<List<Element>> _matriceElem = new List<List<Element>>();
 
     //int k = 0, l = 0;
     // Use this for initialization
@@ -29,15 +30,18 @@ public class CreateWorldScript : MonoBehaviour
 
         for(int i = 0 ; i < _zLimit * 10 ; i += 10)
         {
-            List<GameObject> _matriceTmp = new List<GameObject>();
+            //List<GameObject> _matriceTmp = new List<GameObject>();
+            List<Element> matriceElemTmp = new List<Element>();
             for(int j = 0 ; j < _xLimit * 10 ; j += 10)
             {
                 Vector3 debut = new Vector3(_limit.transform.position.x - (_xLimit * 5) + 5, 0f, _limit.transform.position.z + ((_zLimit * 5) - 5));
                 Vector3 newPos = new Vector3(debut.x + j, 1, debut.z - i);
                 GameObject go = Instantiate(planePrefab, newPos, Quaternion.identity) as GameObject;
-                _matriceTmp.Add(go);
+                //_matriceTmp.Add(go);
+                matriceElemTmp.Add(new Element(go));
             }
-            _matrice.Add(_matriceTmp);
+            //_matrice.Add(_matriceTmp);
+            _matriceElem.Add(matriceElemTmp);
         }
         _lifeGame.init();
     }
