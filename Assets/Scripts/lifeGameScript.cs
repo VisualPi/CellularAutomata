@@ -7,7 +7,6 @@ public class lifeGameScript : MonoBehaviour
     [SerializeField]
     CreateWorldScript _world;
     //public List<List<MeshRenderer>> _matriceMesh = new List<List<MeshRenderer>>();
-    List<List<int>> next = new List<List<int>>();
     int _voisin = 0;
     bool _play = true;
     int _generation = 0;
@@ -15,102 +14,102 @@ public class lifeGameScript : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time >= 1)
+        if (time >= 1)
         {
             time = 0;
-            if(_play)
+            if (_play)
             {
                 //init();
-                next.Clear();
-                for(int i = 0 ; i < _world._matriceElem.Count ; i++)
+                List<List<int>> next = new List<List<int>>();
+                for (int i = 0; i < _world._matriceElem.Count; i++)
                 {
                     List<int> nextTemp = new List<int>();
-                    for(int j = 0 ; j < _world._matriceElem[i].Count ; j++)
+                    for (int j = 0; j < _world._matriceElem[i].Count; j++)
                     {
                         int genTmp = 0;
                         _voisin = 0;
-                        if(j != _world._matriceElem[i].Count - 1)
+                        if (j != _world._matriceElem[i].Count - 1)
                         {
-                            if(_world._matriceElem[i][j + 1].getState())
+                            if (_world._matriceElem[i][j + 1].getState())
                             {
-                                if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i][j + 1]))
+                                if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i][j + 1]))
                                 {
                                     _voisin++;
                                 }
                             }
                         }
-                        if(j != 0)
+                        if (j != 0)
                         {
-                            if(_world._matriceElem[i][j - 1].getState())
+                            if (_world._matriceElem[i][j - 1].getState())
                             {
-                                if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i][j - 1]))
+                                if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i][j - 1]))
                                 {
                                     _voisin++;
                                 }
                             }
 
                         }
-                        if(i != 0)
+                        if (i != 0)
                         {
-                            if(_world._matriceElem[i - 1][j].getState())
+                            if (_world._matriceElem[i - 1][j].getState())
                             {
-                                if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i - 1][j]))
+                                if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i - 1][j]))
                                 {
                                     _voisin++;
                                 }
                             }
-                            if(j != 0)
+                            if (j != 0)
                             {
-                                if(_world._matriceElem[i - 1][j - 1].getState())
+                                if (_world._matriceElem[i - 1][j - 1].getState())
                                 {
-                                    if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i - 1][j - 1]))
+                                    if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i - 1][j - 1]))
                                     {
                                         _voisin++;
                                     }
                                 }
                             }
-                            if(j != _world._matriceElem[i].Count - 1)
+                            if (j != _world._matriceElem[i].Count - 1)
                             {
-                                if(_world._matriceElem[i - 1][j + 1].getState())
+                                if (_world._matriceElem[i - 1][j + 1].getState())
                                 {
-                                    if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i - 1][j + 1]))
+                                    if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i - 1][j + 1]))
                                     {
                                         _voisin++;
                                     }
                                 }
                             }
                         }
-                        if(i != _world._matriceElem.Count - 1)
+                        if (i != _world._matriceElem.Count - 1)
                         {
-                            if(_world._matriceElem[i + 1][j].getState())
+                            if (_world._matriceElem[i + 1][j].getState())
                             {
-                                if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i + 1][j]))
+                                if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i + 1][j]))
                                 {
                                     _voisin++;
                                 }
                             }
-                            if(j != 0)
+                            if (j != 0)
                             {
-                                if(_world._matriceElem[i + 1][j - 1].getState())
+                                if (_world._matriceElem[i + 1][j - 1].getState())
                                 {
-                                    if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i + 1][j - 1]))
+                                    if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i + 1][j - 1]))
                                     {
                                         _voisin++;
                                     }
                                 }
                             }
-                            if(j != _world._matriceElem[i].Count - 1)
+                            if (j != _world._matriceElem[i].Count - 1)
                             {
-                                if(_world._matriceElem[i + 1][j + 1].getState())
+                                if (_world._matriceElem[i + 1][j + 1].getState())
                                 {
-                                    if(_world._matriceElem[i][j].compareGen(_world._matriceElem[i + 1][j + 1]))
+                                    if (_world._matriceElem[i][j].compareGen(_world._matriceElem[i + 1][j + 1]))
                                     {
                                         _voisin++;
                                     }
                                 }
                             }
                         }
-                        if(_voisin == 3)//NAISSANCE
+                        if (_voisin == 3)//NAISSANCE
                         {
                             //_world._matriceElem[i][j]._generation = 0;
 
@@ -119,7 +118,7 @@ public class lifeGameScript : MonoBehaviour
                         else if (_voisin == 2)
                         {
                             //_world._matriceElem[i][j]._generation = 0;
-                            if(_world._matriceElem[i][j].getState())
+                            if (_world._matriceElem[i][j].getState())
                             {
                                 nextTemp.Add(1);//stayAlive
                             }
@@ -153,10 +152,10 @@ public class lifeGameScript : MonoBehaviour
             }
             _matriceMesh.Add(_matriceMeshTemp);
         }*/
-        for(int i = 0 ; i < _world._matriceElem.Count ; i++)
+        for (int i = 0; i < _world._matriceElem.Count; i++)
         {
             List<MeshRenderer> _matriceMeshTemp = new List<MeshRenderer>();
-            for(int j = 0 ; j < _world._matriceElem[i].Count ; j++)
+            for (int j = 0; j < _world._matriceElem[i].Count; j++)
             {
                 MeshRenderer mR = _world._matriceElem[i][j].getMeshRenderer();
                 _matriceMeshTemp.Add(mR);
@@ -168,23 +167,28 @@ public class lifeGameScript : MonoBehaviour
     {
         Debug.Log(tab.Count);
         Debug.Log(tab[1].Count);
-        for(int i = 0 ; i < tab.Count ; i++)
+        for (int i = 0; i < tab.Count; i++)
         {
-            for(int j = 0 ; j < tab[i].Count ; j++)
+            for (int j = 0; j < tab[i].Count; j++)
             {
-                if(tab[i][j] == 0)//death
+                if (tab[i][j] == 0)//death
                 {
                     //_matriceMesh[i][j].enabled = false;
                     _world._matriceElem[i][j].setState(false);
                     //_world._matriceElem[i][j]._generation = 0; //dans setState
                 }
-                else if(tab[i][j] == 1)//stayAlive
+                else if (tab[i][j] == 1)//stayAlive
                 {
                     //_matriceMesh[i][j].enabled = true;
-                    _world._matriceElem[i][j].setState(true);
+                    if (_world._matriceElem[i][j]._newBorn == true)
+                    {
+                        _world._matriceElem[i][j].setState(true);
+                        _world._matriceElem[i][j]._newBorn = false;
+                        _world._matriceElem[i][j].getMeshRenderer().material.color = Color.blue;
+                    }
                     //_world._matriceElem[i][j]._generation++; //dans setState
                 }
-                else if(tab[i][j] == 2)//newBorn
+                else if (tab[i][j] == 2)//newBorn
                 {
                     //_matriceMesh[i][j].enabled = true;
                     _world._matriceElem[i][j]._newBorn = true;
@@ -207,13 +211,13 @@ public class lifeGameScript : MonoBehaviour
     }
     public void grewUp()
     {
-        for(int i = 0 ; i < _world._matriceElem.Count ; i++)
+        for (int i = 0; i < _world._matriceElem.Count; i++)
         {
-            foreach(Element e in _world._matriceElem[i])
+            foreach (Element e in _world._matriceElem[i])
             {
-                if(e.getState())
+                if (e.getState())
                 {
-                    if(e._newBorn)
+                    if (e._newBorn)
                     {
                         e._newBorn = false;
                         e.getMeshRenderer().material.color = Color.blue;
