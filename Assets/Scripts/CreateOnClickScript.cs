@@ -23,8 +23,10 @@ public class CreateOnClickScript : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                MeshRenderer meshRenderer = (MeshRenderer)hit.collider.gameObject.GetComponent("MeshRenderer");
-                meshRenderer.enabled = true;
+                Element e = new Element(hit.collider.gameObject);
+                e.createCellule();
+                //MeshRenderer meshRenderer = (MeshRenderer)hit.collider.gameObject.GetComponent("MeshRenderer");
+                //meshRenderer.enabled = true;
 
             }
         }
