@@ -16,7 +16,7 @@ public class lifeGameScript : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time >= 2)
+        if(time >= 0.08)
         {
             time = 0;
             if(_play)
@@ -28,7 +28,6 @@ public class lifeGameScript : MonoBehaviour
                     List<int> nextTemp = new List<int>();
                     for(int j = 0 ; j < _world._matriceElem[i].Count ; j++)
                     {
-                        int genTmp = 0;
                         _voisin = 0;
                         if(j != _world._matriceElem[i].Count - 1)
                         {
@@ -114,8 +113,14 @@ public class lifeGameScript : MonoBehaviour
                         if(_voisin == 3)//NAISSANCE
                         {
                             //_world._matriceElem[i][j]._generation = 0;
-
-                            nextTemp.Add(2);//newBorn
+                            if(_world._matriceElem[i][j].getState())
+                            {
+                                nextTemp.Add(1);//stayAlive
+                            }
+                            else
+                            {
+                                nextTemp.Add(2);//newBorn
+                            }
                         }
                         else if(_voisin == 2)
                         {
@@ -138,7 +143,6 @@ public class lifeGameScript : MonoBehaviour
                     next.Add(nextTemp);
                 }
             }
-            Debug.Log(_world._matriceElem[25][25]._generation);
             nextState(next);
         }
     }
@@ -175,28 +179,21 @@ public class lifeGameScript : MonoBehaviour
             {
                 if(tab[i][j] == 0)//death
                 {
-                    //_matriceMesh[i][j].enabled = false;
                     _world._matriceElem[i][j].setState(false);
-                    //_world._matriceElem[i][j]._generation = 0; //dans setState
                 }
                 else if(tab[i][j] == 1)//stayAlive
                 {
-                    //_matriceMesh[i][j].enabled = true;
                     if(_world._matriceElem[i][j]._newBorn == true)
                     {
                         _world._matriceElem[i][j].setState(true);
-                        _world._matriceElem[i][j]._newBorn = false;
+                        //_world._matriceElem[i][j]._newBorn = false;
                         _world._matriceElem[i][j].getMeshRenderer().material.color = Color.blue;
                     }
-                    //_world._matriceElem[i][j]._generation++; //dans setState
                 }
                 else if(tab[i][j] == 2)//newBorn
                 {
-                    //_matriceMesh[i][j].enabled = true;
                     _world._matriceElem[i][j]._newBorn = true;
                     _world._matriceElem[i][j].createCellule();
-                    //_world._matriceElem[i][j].setState(true);
-                    //_world._matriceElem[i][j]._generation++; //dans setState
                 }
             }
         }
