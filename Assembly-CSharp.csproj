@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{CD893B69-087B-2EC7-CFD6-011F6B6A8C90}</ProjectGuid>
+	<ProjectGuid>{C9C5ACED-AF37-B251-9AC8-2374AADD4A08}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -49,8 +49,8 @@
      <Compile Include="Assets\Scripts\CameraControlScript.cs" />
      <Compile Include="Assets\Scripts\CreateOnClickScript.cs" />
      <Compile Include="Assets\Scripts\CreateWorldScript.cs" />
+     <Compile Include="Assets\Scripts\Element.cs" />
      <Compile Include="Assets\Scripts\lifeGameScript.cs" />
-     <Compile Include="Assets\Scripts\myComboBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
