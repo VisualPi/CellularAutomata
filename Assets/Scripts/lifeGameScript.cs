@@ -110,7 +110,7 @@ public class lifeGameScript : MonoBehaviour
                                 }
                             }
                         }
-                        if(_voisin >= 3)//NAISSANCE
+                        if(_voisin == 3)//NAISSANCE
                         {
                             //_world._matriceElem[i][j]._generation = 0;
                             nextTemp.Add(1);
