@@ -16,12 +16,12 @@ public class CreateOnClickScript : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if(Input.GetKey(KeyCode.Mouse0))
         {
             _lifeGame.pause();
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(ray, out hit))
             {
                 Element e = new Element(hit.collider.gameObject);
                 e.createCellule();

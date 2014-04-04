@@ -20,7 +20,7 @@ public class Element
     }
     public void setState(bool state)
     {
-        if (state)
+        if(state)
         {
             _generation++;
         }
@@ -39,7 +39,7 @@ public class Element
     }
     public bool compareGen(Element a)
     {
-        if (this._generation == a._generation)
+        if(this._generation == a._generation)
         {
             return true;
         }
@@ -51,7 +51,7 @@ public class Element
     public void createCellule()
     {
         this.setState(true);
-        if (_newBorn)
+        if(_newBorn)
         {
             this.getMeshRenderer().material.color = Color.green;
         }
